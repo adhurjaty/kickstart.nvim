@@ -102,7 +102,11 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
+
+vim.o.wrap = false
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -198,6 +202,18 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Primeagen setup
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv-gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv-gv")
+
+vim.keymap.set('x', '<leader>p', '"_dP')
+vim.keymap.set('n', '<leader>y', '"+y')
+vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>Y', '"+Y')
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -348,6 +364,32 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
+    },
+    {
+      'stevearc/oil.nvim',
+      ---@module 'oil'
+      ---@type oil.SetupOpts
+      opts = {},
+      -- Optional dependencies
+      dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+      config = function()
+        require('oil').setup {
+          columns = { 'icon' },
+          keymaps = {
+            ['<C-h>'] = false,
+            ['<M-h>'] = 'actions.select_split',
+          },
+          view_options = {
+            show_hidden = true,
+          },
+        }
+
+        vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+        -- vim.keymap.set('n', '<space>-', require('oil').toggle_first)
+      end,
+      -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+      -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+      lazy = false,
     },
   },
 
@@ -681,8 +723,11 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        ts_ls = {},
+
+        solargraph = {},
+
+        jdtls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -699,6 +744,8 @@ require('lazy').setup({
           },
         },
       }
+
+      -- require('ruby-lsp').setup()
 
       -- Ensure the servers and tools above are installed
       --
@@ -984,7 +1031,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
