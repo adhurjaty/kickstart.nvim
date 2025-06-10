@@ -79,6 +79,7 @@ require 'keymaps'
 require 'lazy-bootstrap'
 require 'lazy-plugins'
 
+require 'init-windows'
 --  To check the current status of your plugins, run
 --    :Lazy
 --

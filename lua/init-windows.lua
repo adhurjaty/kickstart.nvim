@@ -1,0 +1,7 @@
+vim.cmd '12new'
+vim.cmd 'terminal'
+vim.cmd 'vne'
+vim.cmd 'terminal'
+vim.cmd 'wincmd k'
+vim.cmd 'vne'
+vim.cmd 'wincmd h'
