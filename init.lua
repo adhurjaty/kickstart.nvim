@@ -79,7 +79,8 @@ require 'keymaps'
 require 'lazy-bootstrap'
 require 'lazy-plugins'
 
-require 'init-windows'
+-- init windows sets up 2 side by side editor windows atop 2 side by side terminal windows
+-- require 'init-windows'
 --  To check the current status of your plugins, run
 --    :Lazy
 --
