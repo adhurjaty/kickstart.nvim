@@ -208,7 +208,7 @@ return {
 
       solargraph = {},
 
-      jdtls = {},
+      -- jdtls = {},
 
       lua_ls = {
         -- cmd = { ... },
@@ -244,6 +244,8 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
+      'java-debug-adapter',
+      'java-test',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -260,6 +262,9 @@ return {
           require('lspconfig')[server_name].setup(server)
         end,
       },
+      jdtls = function()
+        return true -- avoid duplicate servers
+      end,
     }
   end,
 }
