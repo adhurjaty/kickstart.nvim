@@ -204,7 +204,17 @@ return {
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
-      ts_ls = {},
+      ts_ls = {
+        root_dir = require("lspconfig").util.root_pattern({ "package.json", "tsconfig.json" }),
+        workspace_required = true,
+        settings = {},
+      },
+      denols = {
+        root_dir = require("lspconfig").util.root_pattern({"deno.json", "deno.jsonc"}),
+        workspace_required = true,
+        root_markers = { "deno.nvim" },
+        settings = {},
+      },
 
       solargraph = {},
 
@@ -266,5 +276,10 @@ return {
         return true -- avoid duplicate servers
       end,
     }
+
+    vim.lsp.config('denols', {
+      workspace_required = true,
+      root_markers = { 'deno.nvim' },
+    })
   end,
 }

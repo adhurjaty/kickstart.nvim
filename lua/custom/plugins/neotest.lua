@@ -55,6 +55,10 @@ return {
       vim.keymap.set('n', '<leader>ts', function()
         neotest.summary.toggle()
       end, { desc = '[T]est toggle [s]ummary panel' })
+
+      vim.keymap.set('n', '<leader>to', function()
+        neotest.output.open()
+      end, { desc = '[T]est [o]pen output window' })
     end
   },
 }
