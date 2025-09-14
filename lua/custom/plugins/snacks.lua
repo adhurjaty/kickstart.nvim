@@ -9,6 +9,14 @@ return {
     explorer = {enabled = false},
     indent = { enabled = true },
     input = { enabled = true },
+    lazygit = {
+      config = {
+        os = { editPreset = "nvim-remote" },
+        gui = {
+          sidePanelWidth = 0.25
+        }
+      },
+    },
     notifier = {
       enabled = true,
       timeout = 3000,

@@ -38,8 +38,8 @@ require('lazy').setup({
 
   require 'kickstart/plugins/blink-cmp',
 
-  -- require 'kickstart/plugins/tokyonight',
-  require 'kickstart/plugins/vscode-theme',
+  require 'kickstart/plugins/tokyonight',
+  -- require 'kickstart/plugins/vscode-theme',
 
   require 'kickstart/plugins/lualine',
 
