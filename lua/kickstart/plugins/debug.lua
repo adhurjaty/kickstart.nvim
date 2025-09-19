@@ -27,32 +27,32 @@ return {
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
     {
-      '<F5>',
+      '<M-c>',
       function()
         require('dap').continue()
       end,
-      desc = 'Debug: Start/Continue',
+      desc = 'Debug: Start/[C]ontinue',
     },
     {
-      '<F1>',
+      '<M-i>',
       function()
         require('dap').step_into()
       end,
-      desc = 'Debug: Step Into',
+      desc = 'Debug: Step [I]nto',
     },
     {
-      '<F2>',
+      '<M-s>',
       function()
         require('dap').step_over()
       end,
-      desc = 'Debug: Step Over',
+      desc = 'Debug: [S]tep Over',
     },
     {
-      '<F3>',
+      '<M-o>',
       function()
         require('dap').step_out()
       end,
-      desc = 'Debug: Step Out',
+      desc = 'Debug: Step [O]ut',
     },
     {
       '<leader>b',
