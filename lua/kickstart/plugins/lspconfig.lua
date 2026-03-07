@@ -218,6 +218,8 @@ return {
 
       solargraph = {},
 
+      roc_ls = {},
+
       -- jdtls = {},
 
       lua_ls = {
