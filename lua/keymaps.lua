@@ -47,6 +47,15 @@ local function insertFullPath()
 end
 
 vim.keymap.set('n', '<leader>kc', insertFullPath, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cc', function()
+  vim.cmd 'terminal otto agents claude'
+  vim.cmd 'startinsert'
+end, { desc = 'Open [C]laude [c]ode in terminal'})
+
+vim.keymap.set('n', '<leader>cy', function()
+  vim.cmd 'terminal otto agents claude -- --dangerously-skip-permissions'
+  vim.cmd 'startinsert'
+end, { desc = 'Open [C]laude code in terminal [y]olo mode'})
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
