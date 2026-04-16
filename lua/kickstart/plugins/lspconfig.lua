@@ -209,12 +209,6 @@ return {
         workspace_required = true,
         settings = {},
       },
-      denols = {
-        root_dir = require("lspconfig").util.root_pattern({"deno.json", "deno.jsonc"}),
-        workspace_required = true,
-        root_markers = { "deno.nvim" },
-        settings = {},
-      },
 
       solargraph = {},
 
@@ -273,15 +267,9 @@ return {
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
+        -- jdtls is managed by nvim-jdtls via ftplugin/java.lua, not lspconfig
+        jdtls = function() end,
       },
-      jdtls = function()
-        return true -- avoid duplicate servers
-      end,
     }
-
-    vim.lsp.config('denols', {
-      workspace_required = true,
-      root_markers = { 'deno.nvim' },
-    })
   end,
 }
