@@ -19,3 +19,14 @@ config['init_options'] = {
 }
 
 require('jdtls').start_or_attach(config)
+
+-- jdtls is a headless JVM that nvim-jdtls does not reliably stop on exit,
+-- leaking ~1GB+ orphan processes across sessions. Stop it cleanly on quit.
+vim.api.nvim_create_autocmd('VimLeavePre', {
+  group = vim.api.nvim_create_augroup('jdtls_shutdown', { clear = true }),
+  callback = function()
+    for _, client in ipairs(vim.lsp.get_clients { name = 'jdtls' }) do
+      client:stop()
+    end
+  end,
+})
