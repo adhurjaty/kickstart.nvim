@@ -474,6 +474,13 @@ return {
       desc = 'Lazygit',
     },
     {
+      '<leader>kk',
+      function()
+        Snacks.terminal('keycloak-tui', { win = { style = 'lazygit' } })
+      end,
+      desc = 'Keycloak TUI',
+    },
+    {
       '<leader>un',
       function()
         Snacks.notifier.hide()
